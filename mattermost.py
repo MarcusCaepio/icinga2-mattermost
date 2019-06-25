@@ -33,8 +33,8 @@ except ImportError:
 
 VERSION = "1.1.0"
 
-TEMPLATE_HOST = "__{notificationtype}__ {hostalias} is {hoststate} - {hostoutput}"  # noqa
-TEMPLATE_SERVICE = "__{notificationtype}__ {hostalias}/{servicedesc} is {servicestate} - {serviceoutput}" # noqa
+TEMPLATE_HOST = "__{notificationtype}__ {hostalias} is {hoststate} - {hostoutput} - {author} - {comment}"  # noqa
+TEMPLATE_SERVICE = "__{notificationtype}__ {hostalias}/{servicedesc} is {servicestate} - {serviceoutput} - {author} - {comment}" # noqa
 
 def parse():
     parser = argparse.ArgumentParser(description='Sends alerts to Mattermost')
@@ -52,6 +52,9 @@ def parse():
     parser.add_argument('--servicedesc', help='Service Description')
     parser.add_argument('--servicestate', help='Service State')
     parser.add_argument('--serviceoutput', help='Service Output')
+    parser.add_argument('--author', help='Author')
+    parser.add_argument('--comment', help='Comment')
+
     parser.add_argument('--oneline', action='store_true', help='Print only one line')
     parser.add_argument('--version', action='version',
                         version='%(prog)s {version}'.format(version=VERSION))
